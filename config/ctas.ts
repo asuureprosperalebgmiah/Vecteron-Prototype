@@ -1,18 +1,14 @@
 export const ctas = {
   primary: {
-    label: "Request a Project",
-    href: "/request-project"
+    label: "Start a Project",
+    href: "/#project-request"
   },
   secondary: {
-    label: "Get a Quote",
-    href: "/contact"
-  },
-  careers: {
-    label: "Join Our Team",
-    href: "/careers"
+    label: "Contact Us",
+    href: "/#contact"
   },
   whatsapp: {
     label: "Contact on WhatsApp",
-    href: "#"
+    href: "https://wa.me/233241234567"
   }
 } as const;

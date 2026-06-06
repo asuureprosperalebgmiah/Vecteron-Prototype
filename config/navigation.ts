@@ -1,46 +1,40 @@
 import type { FooterGroup, NavItem } from "@/types/navigation";
 
 export const primaryNavigation: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Industries", href: "/industries" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Resources", href: "/blog" },
-  { label: "Careers", href: "/careers" },
-  { label: "Contact", href: "/contact" }
-];
-
-export const actionNavigation: NavItem[] = [
-  { label: "Request a Project", href: "/request-project" },
-  { label: "Get a Quote", href: "/contact" }
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Portfolio", href: "/#portfolio" },
+  { label: "Careers", href: "/#careers" },
+  { label: "Project Request", href: "/#project-request" },
+  { label: "Contact", href: "/#contact" }
 ];
 
 export const footerNavigation: FooterGroup[] = [
   {
     title: "Company",
     links: [
-      { label: "About", href: "/about" },
-      { label: "Industries", href: "/industries" },
-      { label: "Portfolio", href: "/portfolio" },
-      { label: "Careers", href: "/careers" }
+      { label: "About", href: "/#about" },
+      { label: "Portfolio", href: "/#portfolio" },
+      { label: "Careers", href: "/#careers" },
+      { label: "Contact", href: "/#contact" }
     ]
   },
   {
     title: "Services",
     links: [
-      { label: "Software & Technology", href: "/services/software-technology" },
-      { label: "Infrastructure & Procurement", href: "/services/infrastructure-procurement" },
-      { label: "Creative & Branding", href: "/services/creative-branding" },
-      { label: "Research & Academic Consulting", href: "/services/research-academic-consulting" }
+      { label: "Web Development", href: "/#services" },
+      { label: "Infrastructure & Procurement", href: "/#services" },
+      { label: "Creative & Branding", href: "/#services" },
+      { label: "Research Consulting", href: "/#services" }
     ]
   },
   {
-    title: "Resources",
+    title: "Start",
     links: [
-      { label: "Blog & Resources", href: "/blog" },
-      { label: "Case Studies", href: "/portfolio" },
-      { label: "Contact", href: "/contact" }
+      { label: "Start a Project", href: "/#project-request" },
+      { label: "Project Request", href: "/#project-request" },
+      { label: "Contact", href: "/#contact" }
     ]
   }
 ];
