@@ -10,40 +10,62 @@ const services = [
   {
     title: "Web Development",
     description: "Responsive websites, business systems, and digital tools built around real operational needs.",
+    outcome: "Launch clearer digital experiences and useful internal tools.",
     icon: "M5 7.5h14v9H5z M8 19h8 M10 16.5v2.5 M14 16.5v2.5 M8.5 10.5l2 2-2 2 M13 14.5h3.5"
   },
   {
     title: "Infrastructure & Procurement",
     description: "IT planning, procurement guidance, vendor coordination, and deployment support.",
+    outcome: "Make technology purchases and rollouts easier to plan.",
     icon: "M7 6.5h10v5H7z M9 14h6 M6 18h12 M9 11.5v6.5 M15 11.5v6.5"
   },
   {
     title: "Creative & Branding",
     description: "Brand identity, digital design, marketing assets, and professional presentation systems.",
+    outcome: "Communicate with a clearer, more consistent visual identity.",
     icon: "M7 15.5 15.5 7l2.5 2.5-8.5 8.5H7z M13.5 8.5l2 2 M6.5 6.5h4 M16 15.5h2.5"
   },
   {
     title: "Cybersecurity & IT Support",
     description: "Practical security awareness, technical review, and support for safer day-to-day operations.",
+    outcome: "Reduce avoidable technical risk with practical support.",
     icon: "M12 4.5 18 7v4.8c0 3.3-2.4 6.2-6 7.7-3.6-1.5-6-4.4-6-7.7V7l6-2.5Z M9.5 12l1.5 1.5 3.5-4"
   },
   {
     title: "Research Consulting",
     description: "Research planning, documentation, academic support, and evidence-aware analysis.",
+    outcome: "Structure research work with better planning and documentation.",
     icon: "M10.5 17.5a6 6 0 1 1 4.2-1.7L19 20 M8.5 11h5 M8.5 13.5h3.5"
   },
   {
     title: "Digital Strategy",
     description: "Clear planning for systems, brand direction, workflows, and technology decisions.",
+    outcome: "Turn broad ideas into scoped, practical next steps.",
     icon: "M5 18V6 M5 18h14 M8 15l3-3 2.2 2.2L18 9 M16 9h2v2"
   }
 ] as const;
 
 const capabilityHighlights = [
-  { value: "Software", label: "Business systems and web experiences" },
-  { value: "Infrastructure", label: "Procurement and IT planning support" },
-  { value: "Creative", label: "Branding, media, and communication assets" },
-  { value: "Research", label: "Academic and evidence-led consulting" }
+  {
+    value: "Software",
+    label: "Business systems and web experiences",
+    icon: "M5 7.5h14v9H5z M8 19h8 M9 11l1.8 1.8L9 14.6 M13 14.5h3"
+  },
+  {
+    value: "Infrastructure",
+    label: "Procurement and IT planning support",
+    icon: "M7 6.5h10v5H7z M9 14h6 M6 18h12 M9 11.5v6.5 M15 11.5v6.5"
+  },
+  {
+    value: "Creative",
+    label: "Branding, media, and communication assets",
+    icon: "M7 15.5 15.5 7l2.5 2.5-8.5 8.5H7z M6.5 6.5h4 M16 15.5h2.5"
+  },
+  {
+    value: "Research",
+    label: "Academic and evidence-led consulting",
+    icon: "M10.5 17.5a6 6 0 1 1 4.2-1.7L19 20 M8.5 11h5 M8.5 13.5h3.5"
+  }
 ] as const;
 
 const aboutCards = [
@@ -115,13 +137,13 @@ function SectionHeader({
 }) {
   return (
     <Reveal className="mx-auto max-w-3xl text-center">
-      <p className={invert ? "text-xs font-bold uppercase tracking-[0.2em] text-brand-primary" : "text-xs font-bold uppercase tracking-[0.2em] text-brand-primary"}>
+      <p className={invert ? "section-eyebrow text-brand-primary" : "section-eyebrow text-brand-primary"}>
         {eyebrow}
       </p>
-      <h2 className={invert ? "mt-4 font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl" : "mt-4 font-display text-3xl font-extrabold leading-tight text-brand-ink sm:text-4xl"}>
+      <h2 className={invert ? "section-title mt-4 text-white" : "section-title mt-4 text-brand-ink"}>
         {title}
       </h2>
-      <p className={invert ? "mt-4 text-base leading-7 text-white/72" : "mt-4 text-base leading-7 text-brand-muted"}>
+      <p className={invert ? "section-copy mt-5 text-white/72" : "section-copy mt-5 text-brand-muted"}>
         {description}
       </p>
     </Reveal>
@@ -132,6 +154,14 @@ function Icon({ path }: { path: string }) {
   return (
     <svg aria-hidden="true" className="size-8" fill="none" viewBox="0 0 24 24">
       <path d={path} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.65" />
+    </svg>
+  );
+}
+
+function SmallIcon({ path }: { path: string }) {
+  return (
+    <svg aria-hidden="true" className="size-5" fill="none" viewBox="0 0 24 24">
+      <path d={path} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" />
     </svg>
   );
 }
@@ -174,14 +204,20 @@ function HeroGlobe() {
         <svg aria-hidden="true" className="absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 100 100">
           <defs>
             <radialGradient id="globeFill" cx="50%" cy="45%" r="58%">
-              <stop offset="0%" stopColor="rgb(18 138 91)" stopOpacity="0.32" />
-              <stop offset="52%" stopColor="rgb(6 182 212)" stopOpacity="0.17" />
+              <stop offset="0%" stopColor="rgb(103 232 249)" stopOpacity="0.12" />
+              <stop offset="42%" stopColor="rgb(18 138 91)" stopOpacity="0.22" />
+              <stop offset="72%" stopColor="rgb(6 182 212)" stopOpacity="0.12" />
               <stop offset="100%" stopColor="rgb(10 33 80)" stopOpacity="0" />
             </radialGradient>
             <linearGradient id="globeLine" x1="0%" x2="100%" y1="0%" y2="100%">
-              <stop offset="0%" stopColor="rgb(18 138 91)" stopOpacity="0.76" />
-              <stop offset="50%" stopColor="rgb(45 212 191)" stopOpacity="0.78" />
-              <stop offset="100%" stopColor="rgb(103 232 249)" stopOpacity="0.9" />
+              <stop offset="0%" stopColor="rgb(18 138 91)" stopOpacity="0.58" />
+              <stop offset="48%" stopColor="rgb(45 212 191)" stopOpacity="0.72" />
+              <stop offset="100%" stopColor="rgb(103 232 249)" stopOpacity="0.82" />
+            </linearGradient>
+            <linearGradient id="globeFrontLine" x1="0%" x2="100%" y1="100%" y2="0%">
+              <stop offset="0%" stopColor="rgb(18 138 91)" stopOpacity="0.7" />
+              <stop offset="50%" stopColor="rgb(45 212 191)" stopOpacity="0.88" />
+              <stop offset="100%" stopColor="rgb(165 243 252)" stopOpacity="0.92" />
             </linearGradient>
           </defs>
           {sparkles.map(([x, y], index) => (
@@ -195,20 +231,24 @@ function HeroGlobe() {
           ))}
           <circle className="hero-globe-shell" cx="52" cy="52" fill="url(#globeFill)" r="38" />
           <circle className="hero-globe-edge" cx="52" cy="52" fill="none" r="39.4" />
-          {lines.map(([from, to]) => (
-            <line
-              className="hero-globe-line"
-              key={`${from}-${to}`}
-              stroke="url(#globeLine)"
-              x1={nodes[from][0]}
-              x2={nodes[to][0]}
-              y1={nodes[from][1]}
-              y2={nodes[to][1]}
-            />
-          ))}
+          {lines.map(([from, to], index) => {
+            const depthClass = index % 5 === 0 ? "hero-globe-line-front" : index % 3 === 0 ? "hero-globe-line-back" : "";
+
+            return (
+              <line
+                className={`hero-globe-line ${depthClass}`}
+                key={`${from}-${to}`}
+                stroke={depthClass === "hero-globe-line-front" ? "url(#globeFrontLine)" : "url(#globeLine)"}
+                x1={nodes[from][0]}
+                x2={nodes[to][0]}
+                y1={nodes[from][1]}
+                y2={nodes[to][1]}
+              />
+            );
+          })}
           {nodes.map(([x, y], index) => (
             <circle
-              className="hero-globe-node"
+              className={`hero-globe-node ${index % 5 === 0 ? "hero-globe-node-front" : index % 4 === 0 ? "hero-globe-node-back" : ""}`}
               cx={x}
               cy={y}
               key={`${x}-${y}`}
@@ -253,15 +293,25 @@ function HeroSection() {
 
 function CapabilityBar() {
   return (
-    <section className="bg-white px-5 py-10 shadow-[0_10px_35px_rgb(10_33_80_/_0.07)]">
+    <section className="relative z-10 -mt-10 bg-gradient-to-b from-brand-ink via-brand-canvas to-brand-canvas px-5 pb-12">
       <Container>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/94 p-3 shadow-[0_22px_70px_rgb(10_33_80_/_0.16)]">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-primary/55 to-transparent" />
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {capabilityHighlights.map((item, index) => (
-            <Reveal className="text-center" delay={index * 80} key={item.value}>
-              <p className="font-display text-2xl font-extrabold text-brand-primary">{item.value}</p>
-              <p className="mt-1 text-sm font-medium text-brand-muted">{item.label}</p>
+            <Reveal className="group rounded-xl p-5 transition-colors duration-300 hover:bg-brand-canvas" delay={index * 80} key={item.value}>
+              <div className="flex items-start gap-4">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-brand-primary/18 bg-brand-primary/8 text-brand-primary transition-colors duration-300 group-hover:bg-brand-primary group-hover:text-white">
+                  <SmallIcon path={item.icon} />
+                </span>
+                <div>
+                  <p className="card-title text-brand-ink">{item.value}</p>
+                  <p className="mt-1 text-sm leading-6 text-brand-muted">{item.label}</p>
+                </div>
+              </div>
             </Reveal>
           ))}
+          </div>
         </div>
       </Container>
     </section>
