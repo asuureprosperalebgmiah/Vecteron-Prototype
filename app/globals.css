@@ -140,6 +140,54 @@ a {
     text-transform: uppercase;
   }
 
+  .text-primary {
+    color: rgb(var(--color-brand-ink));
+  }
+
+  .text-secondary {
+    color: rgb(71 85 105);
+  }
+
+  .text-label {
+    color: rgb(var(--color-brand-primary));
+  }
+
+  .text-metadata {
+    color: rgb(51 65 85);
+  }
+
+  .text-helper {
+    color: rgb(87 99 112);
+  }
+
+  .text-footer {
+    color: rgb(255 255 255 / 0.78);
+  }
+
+  .text-footer-muted {
+    color: rgb(255 255 255 / 0.68);
+  }
+
+  .text-on-dark-primary {
+    color: rgb(255 255 255 / 0.96);
+  }
+
+  .text-on-dark-secondary {
+    color: rgb(226 239 248 / 0.82);
+  }
+
+  .text-on-dark-label {
+    color: rgb(190 255 246 / 0.88);
+  }
+
+  .text-on-dark-metadata {
+    color: rgb(207 250 254 / 0.78);
+  }
+
+  .text-on-dark-helper {
+    color: rgb(226 239 248 / 0.74);
+  }
+
   .section-title {
     font-family: var(--font-display);
     font-size: clamp(2rem, 3.2vw, 3rem);

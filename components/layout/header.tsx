@@ -29,7 +29,7 @@ export function Header() {
         <nav aria-label="Primary navigation" className="hidden items-center gap-4 xl:gap-6 lg:flex">
           {primaryNavigation.map((item) => (
             <Link
-              className="relative text-xs font-semibold text-white transition-colors after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-0 after:bg-brand-primary after:transition-all hover:text-emerald-200 hover:after:w-full xl:text-sm"
+              className="relative text-xs font-semibold text-white transition-colors [text-shadow:0_1px_8px_rgb(0_0_0_/_0.32)] after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-0 after:bg-brand-primary after:transition-all hover:text-emerald-100 hover:after:w-full xl:text-sm"
               href={item.href}
               key={item.href}
             >

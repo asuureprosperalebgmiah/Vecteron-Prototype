@@ -92,18 +92,82 @@ const aboutCards = [
 ] as const;
 
 const portfolioItems = [
-  { title: "Business Website Concepts", category: "Web Development", tone: "from-blue-700 to-cyan-500" },
-  { title: "Procurement Planning Templates", category: "Infrastructure", tone: "from-emerald-700 to-teal-400" },
-  { title: "Brand Identity Systems", category: "Creative & Branding", tone: "from-slate-900 to-emerald-600" },
-  { title: "Research Support Frameworks", category: "Research Consulting", tone: "from-brand-ink to-blue-600" },
-  { title: "Workflow Automation Demos", category: "Digital Systems", tone: "from-cyan-700 to-emerald-500" },
-  { title: "IT Support Playbooks", category: "Cybersecurity & Support", tone: "from-slate-800 to-brand-primary" }
+  {
+    title: "Business Website Concepts",
+    category: "Web Development",
+    label: "Sample showcase area",
+    preview: "Public website system"
+  },
+  {
+    title: "Procurement Planning Templates",
+    category: "Infrastructure",
+    label: "Demo concept",
+    preview: "Planning dashboard"
+  },
+  {
+    title: "Brand Identity Systems",
+    category: "Creative & Branding",
+    label: "Upcoming project showcase",
+    preview: "Brand asset suite"
+  },
+  {
+    title: "Research Support Frameworks",
+    category: "Research Consulting",
+    label: "Sample showcase area",
+    preview: "Research workflow"
+  }
 ] as const;
 
 const careers = [
   "Software and web development collaborators",
   "Creative design and branding interns",
   "Research and documentation assistants"
+] as const;
+
+const processSteps = [
+  {
+    title: "Discover",
+    description: "Clarify the need, context, constraints, and desired result.",
+    icon: "M10.5 17.5a6 6 0 1 1 4.2-1.7L19 20 M8.5 11h5 M8.5 13.5h3.5"
+  },
+  {
+    title: "Plan",
+    description: "Shape the scope, delivery path, priorities, and dependencies.",
+    icon: "M6 6.5h12 M6 11.5h12 M6 16.5h7 M4.5 6.5h.01 M4.5 11.5h.01 M4.5 16.5h.01"
+  },
+  {
+    title: "Build",
+    description: "Create the system, asset, process, or research output.",
+    icon: "M5 7.5h14v9H5z M8.5 11l1.7 1.7-1.7 1.7 M13 14.5h3"
+  },
+  {
+    title: "Support",
+    description: "Review, refine, document, and hand over the work clearly.",
+    icon: "M12 5v14 M5 12h14 M8 8l8 8 M16 8l-8 8"
+  }
+] as const;
+
+const trustItems = [
+  {
+    title: "Practical Execution",
+    description: "Work is scoped around what can be built, improved, documented, and handed over clearly.",
+    icon: "M5 12.5 9 16.5 19 6.5 M5 6.5h8 M5 10h5"
+  },
+  {
+    title: "Research-Driven Thinking",
+    description: "Planning uses context, evidence, and careful questions before moving into implementation.",
+    icon: "M10.5 17.5a6 6 0 1 1 4.2-1.7L19 20 M8.5 11h5 M8.5 13.5h3.5"
+  },
+  {
+    title: "Technology Expertise",
+    description: "Digital systems, infrastructure, and support work are treated as connected business decisions.",
+    icon: "M7 6.5h10v5H7z M9 14h6 M6 18h12 M9 11.5v6.5 M15 11.5v6.5"
+  },
+  {
+    title: "Collaborative Delivery",
+    description: "Communication stays direct, structured, and useful so stakeholders can follow the work.",
+    icon: "M7.5 8.5a3 3 0 1 0 0 6 M16.5 8.5a3 3 0 1 1 0 6 M10 18.5h4 M8 5.5h8"
+  }
 ] as const;
 
 const contactDetails = [
@@ -122,6 +186,13 @@ const contactDetails = [
     value: "Project and service inquiries are reviewed for the clearest next step.",
     icon: "M5 12.5 9 16.5 19 6.5 M5 6.5h8 M5 10h5"
   }
+] as const;
+
+const projectRequestSteps = [
+  "Choose the project type",
+  "Share the business need",
+  "Add contact details",
+  "Receive the next-step response"
 ] as const;
 
 function SectionHeader({
@@ -143,7 +214,7 @@ function SectionHeader({
       <h2 className={invert ? "section-title mt-4 text-white" : "section-title mt-4 text-brand-ink"}>
         {title}
       </h2>
-      <p className={invert ? "section-copy mt-5 text-white/72" : "section-copy mt-5 text-brand-muted"}>
+      <p className={invert ? "section-copy mt-5 text-on-dark-secondary" : "section-copy mt-5 text-secondary"}>
         {description}
       </p>
     </Reveal>
@@ -293,7 +364,7 @@ function HeroSection() {
 
 function CapabilityBar() {
   return (
-    <section className="relative z-10 -mt-10 bg-gradient-to-b from-brand-ink via-brand-canvas to-brand-canvas px-5 pb-12">
+    <section className="relative z-10 -mt-4 bg-gradient-to-b from-brand-ink via-brand-canvas to-brand-canvas px-5 pb-16">
       <Container>
         <div className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/94 p-3 shadow-[0_22px_70px_rgb(10_33_80_/_0.16)]">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-primary/55 to-transparent" />
@@ -306,7 +377,7 @@ function CapabilityBar() {
                 </span>
                 <div>
                   <p className="card-title text-brand-ink">{item.value}</p>
-                  <p className="mt-1 text-sm leading-6 text-brand-muted">{item.label}</p>
+                  <p className="mt-1 text-sm leading-6 text-secondary">{item.label}</p>
                 </div>
               </div>
             </Reveal>
@@ -320,37 +391,62 @@ function CapabilityBar() {
 
 function AboutSection() {
   return (
-    <section className="scroll-mt-20 bg-brand-canvas py-20 sm:py-24" id="about">
+    <section className="section-shell overflow-hidden bg-brand-canvas" id="about">
+      <div className="pointer-events-none absolute right-0 top-16 h-72 w-72 rounded-full bg-brand-primary/10 blur-3xl" aria-hidden="true" />
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-primary">About Vecteron</p>
-            <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-brand-ink sm:text-4xl">
-              Technology, solutions, growth, excellence.
+            <p className="section-eyebrow text-brand-primary">About Vecteron</p>
+            <h2 className="section-title mt-4 max-w-xl text-brand-ink">
+              Practical technology work shaped around planning, execution, and clarity.
             </h2>
-            <p className="mt-5 text-base leading-7 text-brand-muted">
-              Vecteron is a practical technology and consulting company focused on helping teams turn ideas, operational needs, and communication goals into clear digital outputs.
+            <p className="section-copy mt-5 max-w-xl text-secondary">
+              Vecteron helps teams move from loose ideas and operational pressure into clearer digital systems, infrastructure decisions, brand assets, and research support.
             </p>
-            <p className="mt-4 text-base leading-7 text-brand-muted">
-              The work spans web development, infrastructure planning, procurement support, creative branding, research consulting, and digital strategy.
+            <p className="section-copy mt-4 max-w-xl text-secondary">
+              The approach is intentionally grounded: understand the need, plan the work, build what is useful, and keep communication simple enough for teams to act on.
             </p>
-            <Button className="mt-7 rounded-full" href="/#about" variant="secondary">
-              Learn More
+            <Button className="mt-7 rounded-full" href="/#services" variant="secondary">
+              Explore Services
             </Button>
           </Reveal>
-          <Reveal className="relative min-h-80 overflow-hidden rounded-[1.5rem] bg-brand-ink p-6 shadow-soft" delay={120}>
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_22%,rgb(18_138_91_/_0.4),transparent_32%),linear-gradient(135deg,rgb(10_33_80),rgb(7_21_49))]" />
-            <div className="vecteron-grid absolute inset-0 opacity-40" />
-            <div className="relative grid h-full gap-4 sm:grid-cols-2">
-              {aboutCards.map((item) => (
-                <div className="rounded-2xl border border-white/12 bg-white/8 p-5 text-white" key={item.title}>
-                  <span className="flex size-10 items-center justify-center rounded-xl bg-brand-primary">
-                    <Icon path={item.icon} />
-                  </span>
-                  <h3 className="mt-5 font-display text-lg font-bold">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-white/64">{item.description}</p>
+          <Reveal className="relative overflow-hidden rounded-[1.5rem] border border-white/12 bg-brand-ink p-5 shadow-[0_24px_70px_rgb(10_33_80_/_0.16)] sm:p-6" delay={120}>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_22%,rgb(18_138_91_/_0.34),transparent_32%),linear-gradient(135deg,rgb(10_33_80),rgb(7_21_49))]" />
+            <div className="vecteron-grid absolute inset-0 opacity-35" />
+            <div className="relative grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+              <div className="relative min-h-72 overflow-hidden rounded-2xl border border-white/12 bg-white/[0.06] p-5">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_22%,rgb(103_232_249_/_0.18),transparent_30%)]" />
+                <div className="relative flex h-full flex-col justify-between">
+                  <div>
+                    <p className="technical-label text-on-dark-label">System View</p>
+                    <h3 className="mt-3 max-w-xs font-display text-2xl font-semibold leading-tight text-white">
+                      From business need to usable digital output.
+                    </h3>
+                  </div>
+                  <div className="mt-8 grid gap-3">
+                    {["Need", "Plan", "Build", "Support"].map((step, index) => (
+                      <div className="flex items-center gap-3" key={step}>
+                        <span className="flex size-9 items-center justify-center rounded-full border border-brand-primary/40 bg-brand-primary/14 text-xs font-bold text-cyan-100">
+                          0{index + 1}
+                        </span>
+                        <span className="h-px flex-1 bg-gradient-to-r from-brand-primary/70 to-cyan-300/20" />
+                        <span className="w-20 text-sm font-semibold text-on-dark-primary">{step}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              ))}
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                {aboutCards.map((item) => (
+                  <div className="rounded-2xl border border-white/12 bg-white/8 p-5 text-white" key={item.title}>
+                    <span className="flex size-10 items-center justify-center rounded-xl bg-brand-primary">
+                      <Icon path={item.icon} />
+                    </span>
+                    <h3 className="card-title mt-5 text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-on-dark-helper">{item.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </Reveal>
         </div>
@@ -361,23 +457,31 @@ function AboutSection() {
 
 function ServicesSection() {
   return (
-    <section className="scroll-mt-20 bg-white py-20 sm:py-24" id="services">
+    <section className="section-shell bg-white" id="services">
       <Container>
         <SectionHeader
           eyebrow="Our Services"
-          title="A focused mix of digital, infrastructure, creative, and consulting services."
-          description="Simple service areas make it easier to understand where Vecteron can help and what kind of conversation to start."
+          title="Focused services for teams that need practical execution."
+          description="Each service area is designed around a clear outcome: plan better, build cleaner, communicate clearly, and support decisions with evidence."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <Reveal delay={index * 80} key={service.title}>
-              <article className="group relative h-full overflow-hidden rounded-2xl border border-brand-line bg-white p-7 shadow-[0_4px_20px_rgb(10_33_80_/_0.06)] transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_18px_45px_rgb(10_33_80_/_0.12)]">
+              <article className="group relative h-full overflow-hidden rounded-2xl border border-brand-line bg-white p-6 shadow-[0_4px_20px_rgb(10_33_80_/_0.06)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-brand-primary/30 hover:shadow-[0_18px_45px_rgb(10_33_80_/_0.12)]">
                 <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-brand-primary to-cyan-400 transition-transform duration-500 ease-out group-hover:scale-x-100" />
-                <div className="flex size-16 items-center justify-center rounded-2xl bg-brand-primary/10 text-brand-primary transition-all duration-500 ease-out group-hover:bg-brand-primary group-hover:text-white">
-                  <Icon path={service.icon} />
+                <div className="relative min-h-32 overflow-hidden rounded-2xl bg-brand-canvas p-4">
+                  <div className="vecteron-grid absolute inset-0 opacity-60" />
+                  <div className="absolute right-4 top-4 size-16 rounded-full bg-brand-primary/10" />
+                  <div className="relative flex size-14 items-center justify-center rounded-2xl border border-brand-primary/18 bg-white text-brand-primary shadow-[0_10px_28px_rgb(10_33_80_/_0.08)]">
+                    <Icon path={service.icon} />
+                  </div>
+                  <div className="relative mt-6 h-px bg-gradient-to-r from-brand-primary/60 via-cyan-300/45 to-transparent" />
                 </div>
-                <h3 className="mt-6 font-display text-xl font-bold text-brand-ink">{service.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-brand-muted">{service.description}</p>
+                <h3 className="card-title mt-6 text-brand-ink">{service.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-secondary">{service.description}</p>
+                <p className="mt-5 rounded-xl border border-brand-line bg-brand-canvas px-4 py-3 text-sm font-semibold leading-6 text-brand-ink">
+                  {service.outcome}
+                </p>
               </article>
             </Reveal>
           ))}
@@ -387,29 +491,151 @@ function ServicesSection() {
   );
 }
 
+function ProcessStrip() {
+  return (
+    <section className="relative bg-white px-5 pb-20 sm:pb-24">
+      <Container>
+        <Reveal className="relative overflow-hidden rounded-[1.5rem] border border-brand-line bg-brand-ink p-4 shadow-[0_18px_54px_rgb(10_33_80_/_0.12)] sm:p-5">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgb(18_138_91_/_0.2),transparent_30%),linear-gradient(135deg,rgb(10_33_80),rgb(7_25_54))]" />
+          <div className="vecteron-grid absolute inset-0 opacity-25" />
+          <div className="relative grid gap-3 md:grid-cols-4">
+            {processSteps.map((step, index) => (
+              <div className="group relative rounded-2xl border border-white/10 bg-white/[0.06] p-5 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-primary/40 hover:bg-white/[0.09]" key={step.title}>
+                {index < processSteps.length - 1 ? (
+                  <span className="absolute -right-3 top-1/2 hidden h-px w-6 bg-gradient-to-r from-brand-primary to-cyan-300 md:block" aria-hidden="true" />
+                ) : null}
+                <div className="flex items-center gap-4">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full border border-brand-primary/35 bg-brand-primary/14 text-cyan-100">
+                    <SmallIcon path={step.icon} />
+                  </span>
+                  <div>
+                    <p className="technical-label text-on-dark-metadata">Step 0{index + 1}</p>
+                    <h3 className="card-title mt-1 text-white">{step.title}</h3>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm leading-6 text-on-dark-helper">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </Container>
+    </section>
+  );
+}
+
+function TrustSection() {
+  return (
+    <section className="section-shell bg-brand-canvas">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <Reveal>
+            <p className="section-eyebrow text-brand-primary">Why Work With Vecteron</p>
+            <h2 className="section-title mt-4 text-brand-ink">Built for organizations that need clarity before complexity.</h2>
+            <p className="section-copy mt-5 text-secondary">
+              The work is deliberately practical: understand the problem, plan the path, build what matters, and communicate the next step clearly.
+            </p>
+          </Reveal>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {trustItems.map((item, index) => (
+              <Reveal delay={index * 80} key={item.title}>
+                <article className="group h-full rounded-2xl border border-brand-line bg-white p-6 shadow-[0_8px_28px_rgb(10_33_80_/_0.05)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-primary/28 hover:shadow-[0_18px_42px_rgb(10_33_80_/_0.1)]">
+                  <span className="flex size-12 items-center justify-center rounded-2xl bg-brand-primary/10 text-brand-primary transition-colors duration-300 group-hover:bg-brand-primary group-hover:text-white">
+                    <Icon path={item.icon} />
+                  </span>
+                  <h3 className="card-title mt-5 text-brand-ink">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-secondary">{item.description}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 function PortfolioSection() {
   return (
-    <section className="scroll-mt-20 bg-brand-canvas py-20 sm:py-24" id="portfolio">
+    <section className="relative scroll-mt-20 overflow-hidden bg-brand-ink py-20 text-white sm:py-28" id="portfolio">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgb(18_138_91_/_0.22),transparent_32%),radial-gradient(circle_at_12%_82%,rgb(103_232_249_/_0.08),transparent_34%),linear-gradient(135deg,rgb(10_33_80),rgb(7_21_49))]" />
+      <div className="vecteron-grid absolute inset-0 opacity-25" />
       <Container>
         <SectionHeader
           eyebrow="Portfolio"
-          title="Project showcase areas prepared for approved work."
-          description="These cards represent the types of work Vecteron can present when real projects, demos, and case studies are approved for publication."
+          title="A showcase system ready for approved work."
+          description="These branded previews show how real projects, demos, and case studies can be presented once approved content is available."
+          invert
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Reveal className="relative mt-12 overflow-hidden rounded-[1.75rem] border border-white/12 bg-white/[0.07] p-4 shadow-[0_28px_90px_rgb(0_0_0_/_0.18)] sm:p-6">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_20%,rgb(18_138_91_/_0.16),transparent_36%)]" />
+          <div className="relative rounded-[1.25rem] border border-white/12 bg-brand-ink/72 p-3">
+            <div className="flex items-center gap-2 border-b border-white/10 px-3 pb-3">
+              <span className="size-3 rounded-full bg-red-300/80" />
+              <span className="size-3 rounded-full bg-amber-200/80" />
+              <span className="size-3 rounded-full bg-brand-primary/90" />
+              <span className="ml-3 h-7 flex-1 rounded-full border border-white/10 bg-white/[0.06]" />
+            </div>
+            <div className="grid gap-5 p-3 lg:grid-cols-[1.2fr_0.8fr]">
+              <div className="relative min-h-72 overflow-hidden rounded-2xl border border-white/12 bg-[linear-gradient(135deg,rgb(10_33_80),rgb(8_45_58))] p-6">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_38%,rgb(45_212_191_/_0.22),transparent_30%)]" />
+                <div className="vecteron-grid absolute inset-0 opacity-45" />
+                <div className="relative flex h-full flex-col justify-between">
+                  <div>
+                    <p className="technical-label text-on-dark-label">Featured Preview</p>
+                    <h3 className="mt-4 max-w-lg font-display text-3xl font-semibold leading-tight text-white sm:text-4xl">
+                      Branded project previews for websites, systems, research, and identity work.
+                    </h3>
+                  </div>
+                  <div className="mt-10 grid gap-3 sm:grid-cols-3">
+                    {["Planning", "Interface", "Delivery"].map((item) => (
+                      <div className="rounded-2xl border border-white/10 bg-white/[0.07] p-4" key={item}>
+                        <span className="block h-1.5 w-10 rounded-full bg-brand-primary" />
+                        <p className="mt-4 text-sm font-semibold text-white/84">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="grid gap-4">
+                <div className="rounded-2xl border border-white/12 bg-white/[0.07] p-5">
+                  <p className="technical-label text-on-dark-label">Portfolio Status</p>
+                  <p className="mt-3 text-sm leading-6 text-on-dark-secondary">
+                    Showcase entries remain placeholders until real project details, client permissions, and approved outcomes are available.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-brand-primary/25 bg-brand-primary/10 p-5">
+                  <p className="text-sm font-semibold text-cyan-100">No fake clients. No inflated results. Only approved work will become case studies.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+        <div className="relative mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {portfolioItems.map((item, index) => (
             <Reveal delay={index * 80} key={item.title}>
-              <article className="group relative h-72 cursor-pointer overflow-hidden rounded-2xl shadow-soft">
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.tone}`} />
-                <div className="vecteron-grid absolute inset-0 opacity-50 transition-transform duration-700 ease-out group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/92 via-brand-ink/18 to-transparent opacity-80" />
-                <div className="absolute left-5 top-5 rounded-full border border-white/18 bg-white/12 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-white/80">
-                  Work category
+              <article className="group h-full overflow-hidden rounded-2xl border border-white/12 bg-white/[0.07] p-4 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-brand-primary/45 hover:bg-white/[0.1]">
+                <div className="rounded-xl border border-white/12 bg-brand-ink/70 p-2">
+                  <div className="flex items-center gap-1.5 border-b border-white/10 pb-2">
+                    <span className="size-2 rounded-full bg-white/30" />
+                    <span className="size-2 rounded-full bg-white/30" />
+                    <span className="size-2 rounded-full bg-brand-primary" />
+                  </div>
+                  <div className="relative mt-2 aspect-[4/3] overflow-hidden rounded-lg bg-gradient-to-br from-brand-ink via-[#0b3b56] to-brand-primary/70 p-4">
+                    <div className="vecteron-grid absolute inset-0 opacity-45 transition-transform duration-700 ease-out group-hover:scale-110" />
+                    <div className="relative grid h-full content-between">
+                      <span className="h-2 w-16 rounded-full bg-cyan-100/60" />
+                      <div className="grid gap-2">
+                        <span className="h-2 rounded-full bg-white/30" />
+                        <span className="h-2 w-2/3 rounded-full bg-brand-primary/80" />
+                        <span className="h-2 w-1/2 rounded-full bg-cyan-100/45" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 translate-y-4 p-6 text-white opacity-90 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
-                  <span className="text-sm font-semibold text-emerald-200">{item.category}</span>
-                  <h3 className="mt-2 font-display text-2xl font-bold">{item.title}</h3>
-                </div>
+                <p className="technical-label mt-5 text-brand-primary">{item.label}</p>
+                <h3 className="card-title mt-2 text-white">{item.title}</h3>
+                <p className="mt-2 text-sm font-semibold text-on-dark-metadata">{item.category}</p>
+                <p className="mt-3 text-sm leading-6 text-on-dark-helper">{item.preview}</p>
               </article>
             </Reveal>
           ))}
@@ -421,27 +647,36 @@ function PortfolioSection() {
 
 function CareersSection() {
   return (
-    <section className="scroll-mt-20 bg-white py-20 sm:py-24" id="careers">
+    <section className="section-shell bg-white" id="careers">
       <Container>
-        <SectionHeader
-          eyebrow="Careers"
-          title="Future collaboration opportunities will be shared as the team grows."
-          description="Vecteron is early-stage, so this section stays intentionally brief. Future roles, internships, and collaborator opportunities will be shared when they are ready."
-        />
-        <div className="mx-auto mt-10 grid max-w-4xl gap-4">
-          {careers.map((career, index) => (
-            <Reveal delay={index * 80} key={career}>
-              <div className="flex flex-col gap-4 rounded-2xl border border-brand-line bg-brand-canvas p-5 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-primary/35 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h3 className="font-display text-lg font-bold text-brand-ink">{career}</h3>
-                  <p className="mt-1 text-sm text-brand-muted">Future opportunity area</p>
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <Reveal>
+            <p className="section-eyebrow text-brand-primary">Careers & Opportunities</p>
+            <h2 className="section-title mt-4 text-brand-ink">Future roles will be shared when there is a clear opening.</h2>
+            <p className="section-copy mt-5 text-secondary">
+              Vecteron is still growing, so this area stays honest and compact. Future opportunities may include technical collaborators, creative interns, and research support roles.
+            </p>
+          </Reveal>
+          <div className="grid gap-4">
+            {careers.map((career, index) => (
+              <Reveal delay={index * 80} key={career}>
+                <div className="group flex flex-col gap-4 rounded-2xl border border-brand-line bg-brand-canvas p-5 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-primary/35 hover:bg-white sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-start gap-4">
+                    <span className="mt-1 flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-primary/10 text-sm font-bold text-brand-primary">
+                      0{index + 1}
+                    </span>
+                    <div>
+                      <h3 className="card-title text-brand-ink">{career}</h3>
+                      <p className="mt-1 text-sm leading-6 text-secondary">Future opportunity area, not an active listing.</p>
+                    </div>
+                  </div>
+                  <span className="w-fit rounded-full border border-brand-line px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-metadata">
+                    Future
+                  </span>
                 </div>
-                <Button className="w-fit rounded-full" href="/#careers" variant="secondary">
-                  View Careers
-                </Button>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+          </div>
         </div>
       </Container>
     </section>
@@ -459,41 +694,65 @@ function ProjectRequestSection() {
           description="Share the project type, contact details, budget direction, and the main thing you want to achieve."
           invert
         />
-        <Reveal className="relative mx-auto mt-12 max-w-4xl rounded-2xl border border-white/12 bg-white/8 p-6 shadow-[0_20px_54px_rgb(0_0_0_/_0.16)] sm:p-8">
-          <form className="grid gap-5">
-            <div className="grid gap-5 md:grid-cols-2">
-              <label className="grid gap-2 text-sm font-semibold">
-                Full name
-                <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/38 focus:border-brand-primary focus:ring-brand-primary" placeholder="Your name" type="text" />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold">
-                Email address
-                <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/38 focus:border-brand-primary focus:ring-brand-primary" placeholder="you@example.com" type="email" />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold">
-                Organization
-                <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/38 focus:border-brand-primary focus:ring-brand-primary" placeholder="Organization name" type="text" />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold">
-                Project type
-                <select className="rounded-xl border-white/18 bg-white/8 text-white focus:border-brand-primary focus:ring-brand-primary">
-                  <option>Web development</option>
-                  <option>Infrastructure & procurement</option>
-                  <option>Creative & branding</option>
-                  <option>Research consulting</option>
-                  <option>Digital strategy</option>
-                </select>
-              </label>
+        <div className="relative mt-12 grid gap-8 lg:grid-cols-[0.82fr_1.18fr]">
+          <Reveal className="rounded-2xl border border-white/12 bg-white/[0.07] p-6 shadow-[0_20px_54px_rgb(0_0_0_/_0.12)] sm:p-8">
+            <p className="technical-label text-on-dark-label">Frontend-only intake preview</p>
+            <h3 className="mt-4 font-display text-2xl font-semibold leading-tight text-white">A simple way to frame the first conversation.</h3>
+            <div className="mt-8 grid gap-4">
+              {projectRequestSteps.map((step, index) => (
+                <div className="flex items-center gap-4" key={step}>
+                  <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-brand-primary/35 bg-brand-primary/14 text-sm font-bold text-cyan-100">
+                    0{index + 1}
+                  </span>
+                  <p className="text-sm font-semibold text-on-dark-primary">{step}</p>
+                </div>
+              ))}
             </div>
-            <label className="grid gap-2 text-sm font-semibold">
-              Project description
-              <textarea className="min-h-36 rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/38 focus:border-brand-primary focus:ring-brand-primary" placeholder="Tell us what you want to build, improve, plan, or explore." />
-            </label>
-            <Button className="w-full rounded-xl bg-gradient-to-r from-brand-primary to-cyan-500" type="button">
-              Prepare Project Brief
-            </Button>
-          </form>
-        </Reveal>
+            <div className="mt-8 rounded-2xl border border-brand-primary/24 bg-brand-primary/10 p-5">
+              <p className="text-sm leading-6 text-on-dark-secondary">
+                This form does not submit yet. Backend handling and notifications can be connected when the launch process is ready.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal className="rounded-2xl border border-white/12 bg-white/8 p-6 shadow-[0_20px_54px_rgb(0_0_0_/_0.16)] sm:p-8" delay={120}>
+            <form className="grid gap-5">
+              <div className="grid gap-5 md:grid-cols-2">
+                <label className="grid gap-2 text-sm font-semibold">
+                  Full name
+                  <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/60 focus:border-brand-primary focus:ring-brand-primary" placeholder="Your name" type="text" />
+                </label>
+                <label className="grid gap-2 text-sm font-semibold">
+                  Email address
+                  <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/60 focus:border-brand-primary focus:ring-brand-primary" placeholder="you@example.com" type="email" />
+                </label>
+                <label className="grid gap-2 text-sm font-semibold">
+                  Organization
+                  <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/60 focus:border-brand-primary focus:ring-brand-primary" placeholder="Organization name" type="text" />
+                </label>
+                <label className="grid gap-2 text-sm font-semibold">
+                  Project type
+                  <select className="rounded-xl border-white/18 bg-white/8 text-white focus:border-brand-primary focus:ring-brand-primary">
+                    <option>Web development</option>
+                    <option>Infrastructure & procurement</option>
+                    <option>Creative & branding</option>
+                    <option>Research consulting</option>
+                    <option>Digital strategy</option>
+                  </select>
+                </label>
+              </div>
+              <label className="grid gap-2 text-sm font-semibold">
+                Project description
+                <textarea className="min-h-36 rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/60 focus:border-brand-primary focus:ring-brand-primary" placeholder="Tell us what you want to build, improve, plan, or explore." />
+              </label>
+              <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
+                <Button className="w-full rounded-full bg-gradient-to-r from-brand-primary to-cyan-500" type="button">
+                  Prepare Project Brief
+                </Button>
+                <WhatsAppLink className="border-white/14 bg-white/[0.06] !text-white hover:!border-brand-success/45 hover:!bg-brand-success/10 hover:!text-white" label="Follow up on WhatsApp" shape="button" />
+              </div>
+            </form>
+          </Reveal>
+        </div>
       </Container>
     </section>
   );
@@ -501,7 +760,7 @@ function ProjectRequestSection() {
 
 function ContactSection() {
   return (
-    <section className="scroll-mt-20 bg-white py-20 sm:py-24" id="contact">
+    <section className="section-shell bg-white" id="contact">
       <Container>
         <SectionHeader
           eyebrow="Contact Us"
@@ -518,7 +777,7 @@ function ContactSection() {
                   </span>
                   <div>
                     <h3 className="font-display font-bold text-brand-ink">{detail.label}</h3>
-                    <p className="mt-1 text-sm leading-6 text-brand-muted">{detail.value}</p>
+                    <p className="mt-1 text-sm leading-6 text-secondary">{detail.value}</p>
                   </div>
                 </div>
               ))}
@@ -527,6 +786,16 @@ function ContactSection() {
                 label="Chat on WhatsApp"
                 shape="button"
               />
+              <div className="relative overflow-hidden rounded-2xl border border-brand-line bg-brand-ink p-5 text-white">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_22%,rgb(18_138_91_/_0.24),transparent_32%)]" />
+                <div className="vecteron-grid absolute inset-0 opacity-25" />
+                <div className="relative">
+                  <p className="technical-label text-on-dark-label">Communication Channel</p>
+                  <p className="mt-4 text-sm leading-6 text-on-dark-secondary">
+                    Use the channel that fits the conversation. Project details can start simple and become more structured after review.
+                  </p>
+                </div>
+              </div>
             </div>
           </Reveal>
           <Reveal delay={120}>
@@ -549,7 +818,7 @@ function ContactSection() {
                 Message
                 <textarea className="min-h-36 rounded-xl border-brand-line bg-brand-canvas focus:border-brand-primary focus:ring-brand-primary" placeholder="Share a short message." />
               </label>
-              <Button className="mt-6 w-full rounded-xl" type="button">
+              <Button className="mt-6 w-full rounded-full" type="button">
                 Prepare Message
               </Button>
             </form>
@@ -582,6 +851,8 @@ export function HomePageSections() {
       <CapabilityBar />
       <AboutSection />
       <ServicesSection />
+      <ProcessStrip />
+      <TrustSection />
       <PortfolioSection />
       <CareersSection />
       <ProjectRequestSection />
