@@ -36,7 +36,7 @@ export function WhatsAppLink({
   return (
     <Link
       className={cn(
-        "group inline-flex min-h-11 items-center justify-center gap-2.5 border border-white/8 bg-white/5 px-4 py-2 text-sm font-semibold text-white/66 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-success/45 hover:bg-brand-success/12 hover:text-white hover:shadow-[0_16px_42px_rgb(34_122_93_/_0.18)]",
+        "group inline-flex min-h-11 items-center justify-center gap-2.5 border border-white/8 bg-white/5 px-4 py-2 text-sm font-semibold text-white/66 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-success/45 hover:bg-brand-success/12 hover:text-white hover:shadow-[0_12px_30px_rgb(34_122_93_/_0.16)]",
         shape === "pill" ? "rounded-full" : "rounded-lg px-5 py-2.5",
         className
       )}

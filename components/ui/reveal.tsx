@@ -9,6 +9,30 @@ type RevealProps = HTMLAttributes<HTMLDivElement> & {
   delay?: number;
 };
 
+const observedElements = new WeakMap<Element, () => void>();
+let sharedObserver: IntersectionObserver | null = null;
+
+function getSharedObserver() {
+  if (!sharedObserver) {
+    sharedObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) {
+            continue;
+          }
+
+          observedElements.get(entry.target)?.();
+          observedElements.delete(entry.target);
+          sharedObserver?.unobserve(entry.target);
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.08 }
+    );
+  }
+
+  return sharedObserver;
+}
+
 export function Reveal({ children, className, delay = 0, style, ...props }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -16,23 +40,18 @@ export function Reveal({ children, className, delay = 0, style, ...props }: Reve
   useEffect(() => {
     const node = ref.current;
 
-    if (!node) {
+    if (!node || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setIsVisible(true);
       return;
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { rootMargin: "0px 0px -12% 0px", threshold: 0.14 }
-    );
+    observedElements.set(node, () => setIsVisible(true));
+    getSharedObserver().observe(node);
 
-    observer.observe(node);
-
-    return () => observer.disconnect();
+    return () => {
+      observedElements.delete(node);
+      sharedObserver?.unobserve(node);
+    };
   }, []);
 
   return (

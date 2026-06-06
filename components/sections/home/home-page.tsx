@@ -168,7 +168,7 @@ function HeroGlobe() {
   ] as const;
 
   return (
-    <Reveal className="relative mx-auto hidden aspect-square w-full max-w-[39rem] overflow-visible lg:-mt-7 lg:block" delay={180}>
+    <Reveal className="hero-load hero-load-visual relative mx-auto hidden aspect-square w-full max-w-[39rem] overflow-visible lg:-mt-7 lg:block" delay={180}>
       <div className="hero-globe-aura absolute inset-0 rounded-full" aria-hidden="true" />
       <div className="hero-globe relative h-full w-full rounded-full">
         <svg aria-hidden="true" className="absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 100 100">
@@ -191,17 +191,15 @@ function HeroGlobe() {
               cy={y}
               key={`${x}-${y}`}
               r={index % 2 === 0 ? 0.72 : 0.52}
-              style={{ animationDelay: `${index * 220}ms` }}
             />
           ))}
           <circle className="hero-globe-shell" cx="52" cy="52" fill="url(#globeFill)" r="38" />
           <circle className="hero-globe-edge" cx="52" cy="52" fill="none" r="39.4" />
-          {lines.map(([from, to], index) => (
+          {lines.map(([from, to]) => (
             <line
               className="hero-globe-line"
               key={`${from}-${to}`}
               stroke="url(#globeLine)"
-              style={{ animationDelay: `${index * 120}ms` }}
               x1={nodes[from][0]}
               x2={nodes[to][0]}
               y1={nodes[from][1]}
@@ -215,7 +213,6 @@ function HeroGlobe() {
               cy={y}
               key={`${x}-${y}`}
               r={index % 3 === 0 ? 1.45 : 1.1}
-              style={{ animationDelay: `${index * 160}ms` }}
             />
           ))}
           <path className="hero-globe-trail" d="M6 88 C22 76, 32 70, 47 63 C61 57, 72 54, 92 45" fill="none" />
@@ -234,7 +231,7 @@ function HeroSection() {
       <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_50%_45%,rgb(18_138_91_/_0.2),transparent_50%)] lg:block" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" aria-hidden="true" />
       <Container className="relative grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
-        <Reveal className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
+        <Reveal className="hero-load hero-load-copy mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
           <h1 className="font-display text-[clamp(2.45rem,5.25vw,4.45rem)] font-bold uppercase leading-[1.04] tracking-[0.015em] text-white [font-family:var(--font-display)]">
             Innovating
             <span className="my-1.5 block bg-gradient-to-r from-brand-primary via-teal-300 to-cyan-300 bg-clip-text text-transparent">Beyond</span>
@@ -296,7 +293,7 @@ function AboutSection() {
             <div className="vecteron-grid absolute inset-0 opacity-40" />
             <div className="relative grid h-full gap-4 sm:grid-cols-2">
               {aboutCards.map((item) => (
-                <div className="rounded-2xl border border-white/12 bg-white/8 p-5 text-white backdrop-blur" key={item.title}>
+                <div className="rounded-2xl border border-white/12 bg-white/8 p-5 text-white" key={item.title}>
                   <span className="flex size-10 items-center justify-center rounded-xl bg-brand-primary">
                     <Icon path={item.icon} />
                   </span>
@@ -412,7 +409,7 @@ function ProjectRequestSection() {
           description="Share the project type, contact details, budget direction, and the main thing you want to achieve."
           invert
         />
-        <Reveal className="relative mx-auto mt-12 max-w-4xl rounded-2xl border border-white/12 bg-white/8 p-6 shadow-[0_24px_70px_rgb(0_0_0_/_0.2)] backdrop-blur sm:p-8">
+        <Reveal className="relative mx-auto mt-12 max-w-4xl rounded-2xl border border-white/12 bg-white/8 p-6 shadow-[0_20px_54px_rgb(0_0_0_/_0.16)] sm:p-8">
           <form className="grid gap-5">
             <div className="grid gap-5 md:grid-cols-2">
               <label className="grid gap-2 text-sm font-semibold">
