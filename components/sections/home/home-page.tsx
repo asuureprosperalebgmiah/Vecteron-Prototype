@@ -220,18 +220,30 @@ const contactDetails = [
   {
     label: "Email",
     value: brandConfig.contact.email,
+    href: `mailto:${brandConfig.contact.email}`,
     icon: "M5 8.5 12 13l7-4.5 M6 6h12a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"
   },
   {
     label: "Phone / WhatsApp",
     value: brandConfig.contact.phone,
+    href: `tel:${brandConfig.contact.phone.replace(/\s+/g, "")}`,
     icon: "M8 5.5h8a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-11a1 1 0 0 1 1-1Z M10 16.5h4 M11 8h2"
   },
   {
     label: "Location",
     value: brandConfig.contact.location,
+    href: null,
     icon: "M12 20s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10Z M12 12.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z"
   }
+] as const;
+
+const contactWorkflow = ["Message", "Discuss", "Clarify", "Next Step"] as const;
+
+const contactBestFor = [
+  "Quick questions",
+  "Early project discussions",
+  "Service clarification",
+  "Partnership inquiries"
 ] as const;
 
 const projectRequestSteps = [
@@ -1350,7 +1362,16 @@ function ContactSection() {
                   </span>
                   <div>
                     <h3 className="font-display font-bold text-brand-ink">{detail.label}</h3>
-                    <p className="mt-1 text-sm leading-6 text-secondary">{detail.value}</p>
+                    {detail.href ? (
+                      <a
+                        className="mt-1 inline-flex rounded-md text-sm font-semibold leading-6 text-secondary underline-offset-4 transition-colors duration-300 hover:text-brand-primary hover:underline focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-brand-primary"
+                        href={detail.href}
+                      >
+                        {detail.value}
+                      </a>
+                    ) : (
+                      <p className="mt-1 text-sm leading-6 text-secondary">{detail.value}</p>
+                    )}
                   </div>
                 </div>
               ))}
@@ -1363,9 +1384,32 @@ function ContactSection() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_22%,rgb(18_138_91_/_0.24),transparent_32%)]" />
                 <div className="vecteron-grid absolute inset-0 opacity-25" />
                 <div className="relative">
-                  <p className="technical-label text-on-dark-label">Communication Channel</p>
-                  <p className="mt-4 text-sm leading-6 text-on-dark-secondary">
-                    Use the channel that fits the conversation. A request can start simple, then become more structured after the team reviews the service area and next step.
+                  <p className="technical-label text-on-dark-label">Best For</p>
+                  <div className="mt-5 grid gap-2 sm:grid-cols-2">
+                    {contactBestFor.map((item) => (
+                      <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.07] px-3 py-2" key={item}>
+                        <span className="size-1.5 rounded-full bg-brand-primary shadow-[0_0_10px_rgb(18_138_91_/_0.58)]" />
+                        <span className="text-sm font-semibold text-on-dark-primary">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-6 rounded-2xl border border-white/12 bg-brand-ink/42 p-4">
+                    <div className="grid gap-3 sm:grid-cols-4">
+                      {contactWorkflow.map((item, index) => (
+                        <div className="relative rounded-xl border border-white/10 bg-white/[0.06] p-3" key={item}>
+                          {index < contactWorkflow.length - 1 ? (
+                            <span className="absolute -right-3 top-1/2 hidden h-px w-6 bg-gradient-to-r from-brand-primary to-cyan-300 sm:block" aria-hidden="true" />
+                          ) : null}
+                          <span className="flex size-7 items-center justify-center rounded-full border border-brand-primary/35 bg-brand-primary/14 text-[0.68rem] font-bold text-cyan-100">
+                            0{index + 1}
+                          </span>
+                          <p className="mt-3 text-xs font-bold uppercase tracking-[0.12em] text-on-dark-primary">{item}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="mt-5 text-sm leading-6 text-on-dark-secondary">
+                    Use Contact for general questions, partnership discussions, and early conversations. Use Project Request when you already have a specific service need or scoped work to discuss.
                   </p>
                 </div>
               </div>
@@ -1376,24 +1420,27 @@ function ContactSection() {
               <div className="grid gap-5 md:grid-cols-2">
                 <label className="grid gap-2 text-sm font-semibold text-brand-ink">
                   Name
-                  <input className="rounded-xl border-brand-line bg-brand-canvas focus:border-brand-primary focus:ring-brand-primary" placeholder="Your name" type="text" />
+                  <input className="rounded-xl border-brand-line bg-brand-canvas placeholder:text-slate-500 focus:border-brand-primary focus:ring-brand-primary" placeholder="Your name" type="text" />
                 </label>
                 <label className="grid gap-2 text-sm font-semibold text-brand-ink">
                   Email
-                  <input className="rounded-xl border-brand-line bg-brand-canvas focus:border-brand-primary focus:ring-brand-primary" placeholder="you@example.com" type="email" />
+                  <input className="rounded-xl border-brand-line bg-brand-canvas placeholder:text-slate-500 focus:border-brand-primary focus:ring-brand-primary" placeholder="you@example.com" type="email" />
                 </label>
               </div>
               <label className="mt-5 grid gap-2 text-sm font-semibold text-brand-ink">
                 Subject
-                <input className="rounded-xl border-brand-line bg-brand-canvas focus:border-brand-primary focus:ring-brand-primary" placeholder="What would you like to discuss?" type="text" />
+                <input className="rounded-xl border-brand-line bg-brand-canvas placeholder:text-slate-500 focus:border-brand-primary focus:ring-brand-primary" placeholder="What would you like to discuss?" type="text" />
               </label>
               <label className="mt-5 grid gap-2 text-sm font-semibold text-brand-ink">
                 Message
-                <textarea className="min-h-36 rounded-xl border-brand-line bg-brand-canvas focus:border-brand-primary focus:ring-brand-primary" placeholder="Share a short message." />
+                <textarea className="min-h-36 rounded-xl border-brand-line bg-brand-canvas placeholder:text-slate-500 focus:border-brand-primary focus:ring-brand-primary" placeholder="Share a short message about your question, partnership idea, or service need." />
               </label>
               <Button className="mt-6 w-full rounded-full" type="button">
                 Prepare Message
               </Button>
+              <p className="mt-4 rounded-2xl border border-brand-line bg-brand-canvas px-4 py-3 text-sm leading-6 text-secondary">
+                This form is currently a frontend preview. Use email, phone, or WhatsApp to share prepared message details with the Vecteron team.
+              </p>
             </form>
           </Reveal>
         </div>
