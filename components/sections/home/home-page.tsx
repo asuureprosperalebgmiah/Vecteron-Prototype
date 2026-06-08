@@ -1235,7 +1235,22 @@ function ProjectRequestSection() {
           <Reveal className="rounded-2xl border border-white/12 bg-white/[0.07] p-6 shadow-[0_20px_54px_rgb(0_0_0_/_0.12)] sm:p-8">
             <p className="technical-label text-on-dark-label">Project intake preview</p>
             <h3 className="mt-4 font-display text-2xl font-semibold leading-tight text-white">A simple way to prepare the first practical conversation.</h3>
-            <div className="mt-8 grid gap-4">
+            <div className="mt-7 rounded-2xl border border-white/12 bg-brand-ink/38 p-4">
+              <div className="grid gap-3 sm:grid-cols-4">
+                {["Request", "Review", "Clarify", "Response"].map((item, index) => (
+                  <div className="relative rounded-xl border border-white/10 bg-white/[0.06] p-3" key={item}>
+                    {index < 3 ? (
+                      <span className="absolute -right-3 top-1/2 hidden h-px w-6 bg-gradient-to-r from-brand-primary to-cyan-300 sm:block" aria-hidden="true" />
+                    ) : null}
+                    <span className="flex size-8 items-center justify-center rounded-full border border-brand-primary/35 bg-brand-primary/14 text-xs font-bold text-cyan-100">
+                      0{index + 1}
+                    </span>
+                    <p className="mt-3 text-xs font-bold uppercase tracking-[0.12em] text-on-dark-primary">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mt-6 grid gap-4">
               {projectRequestSteps.map((step, index) => (
                 <div className="flex items-center gap-4" key={step}>
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-brand-primary/35 bg-brand-primary/14 text-sm font-bold text-cyan-100">
@@ -1246,8 +1261,9 @@ function ProjectRequestSection() {
               ))}
             </div>
             <div className="mt-8 rounded-2xl border border-brand-primary/24 bg-brand-primary/10 p-5">
-              <p className="text-sm leading-6 text-on-dark-secondary">
-                This intake is currently prepared for review conversations. Direct submission and notifications can be connected when the launch process is approved.
+              <p className="technical-label text-on-dark-label">Typical next steps</p>
+              <p className="mt-3 text-sm leading-6 text-on-dark-secondary">
+                Request details are reviewed, scope is clarified if needed, a recommended approach is shared, and a project discussion can be scheduled through the available contact channels.
               </p>
             </div>
           </Reveal>
@@ -1256,19 +1272,19 @@ function ProjectRequestSection() {
               <div className="grid gap-5 md:grid-cols-2">
                 <label className="grid gap-2 text-sm font-semibold">
                   Full name
-                  <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/60 focus:border-brand-primary focus:ring-brand-primary" placeholder="Your name" type="text" />
+                  <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/70 focus:border-brand-primary focus:ring-brand-primary" placeholder="Your name" type="text" />
                 </label>
                 <label className="grid gap-2 text-sm font-semibold">
                   Email address
-                  <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/60 focus:border-brand-primary focus:ring-brand-primary" placeholder="you@example.com" type="email" />
+                  <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/70 focus:border-brand-primary focus:ring-brand-primary" placeholder="you@example.com" type="email" />
                 </label>
                 <label className="grid gap-2 text-sm font-semibold">
                   Organization
-                  <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/60 focus:border-brand-primary focus:ring-brand-primary" placeholder="Organization name" type="text" />
+                  <input className="rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/70 focus:border-brand-primary focus:ring-brand-primary" placeholder="Organization name or individual" type="text" />
                 </label>
                 <label className="grid gap-2 text-sm font-semibold">
                   Project type
-                  <select className="rounded-xl border-white/18 bg-white/8 text-white focus:border-brand-primary focus:ring-brand-primary">
+                  <select className="rounded-xl border-white/18 bg-white/8 text-white [color-scheme:dark] focus:border-brand-primary focus:ring-brand-primary">
                     <option>Software & Technology Services</option>
                     <option>Infrastructure & Workspace Planning</option>
                     <option>Creative, Branding & Media Services</option>
@@ -1276,10 +1292,27 @@ function ProjectRequestSection() {
                     <option>Not sure yet</option>
                   </select>
                 </label>
+                <label className="grid gap-2 text-sm font-semibold">
+                  Preferred contact method
+                  <select className="rounded-xl border-white/18 bg-white/8 text-white [color-scheme:dark] focus:border-brand-primary focus:ring-brand-primary">
+                    <option>Email</option>
+                    <option>WhatsApp</option>
+                    <option>Phone Call</option>
+                  </select>
+                </label>
+                <label className="grid gap-2 text-sm font-semibold">
+                  Preferred timeline
+                  <select className="rounded-xl border-white/18 bg-white/8 text-white [color-scheme:dark] focus:border-brand-primary focus:ring-brand-primary">
+                    <option>Immediately</option>
+                    <option>Within 1 Month</option>
+                    <option>Within 3 Months</option>
+                    <option>Exploring Options</option>
+                  </select>
+                </label>
               </div>
               <label className="grid gap-2 text-sm font-semibold">
                 Project description
-                <textarea className="min-h-36 rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/60 focus:border-brand-primary focus:ring-brand-primary" placeholder="Tell us what you want to build, plan, design, support, or research." />
+                <textarea className="min-h-36 rounded-xl border-white/18 bg-white/8 text-white placeholder:text-white/70 focus:border-brand-primary focus:ring-brand-primary" placeholder="Tell us what you want to build, plan, design, support, or research." />
               </label>
               <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
                 <Button className="w-full rounded-full bg-gradient-to-r from-brand-primary to-cyan-500" type="button">
@@ -1287,6 +1320,9 @@ function ProjectRequestSection() {
                 </Button>
                 <WhatsAppLink className="border-white/14 bg-white/[0.06] !text-white hover:!border-brand-success/45 hover:!bg-brand-success/10 hover:!text-white" label="Follow up on WhatsApp" shape="button" />
               </div>
+              <p className="rounded-2xl border border-white/12 bg-white/[0.06] px-4 py-3 text-sm leading-6 text-on-dark-secondary">
+                This form is currently a frontend preview. Use WhatsApp, email, or phone to share prepared request details with the Vecteron team.
+              </p>
             </form>
           </Reveal>
         </div>
