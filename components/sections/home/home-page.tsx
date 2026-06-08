@@ -789,14 +789,17 @@ function VisionMissionSection() {
                   The working principles behind Vecteron&apos;s delivery, communication, and long-term support.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
                 {coreValues.map((value) => (
-                  <span
-                    className="rounded-full border border-brand-primary/18 bg-white px-4 py-2 text-sm font-semibold text-brand-ink shadow-[0_6px_18px_rgb(10_33_80_/_0.04)]"
+                  <div
+                    className="group/value relative min-h-16 rounded-xl border border-brand-line bg-white px-4 py-3 shadow-[0_6px_18px_rgb(10_33_80_/_0.035)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-brand-primary/30 hover:shadow-[0_12px_28px_rgb(10_33_80_/_0.08)]"
                     key={value}
                   >
-                    {value}
-                  </span>
+                    <span className="absolute left-4 top-3 h-1.5 w-8 rounded-full bg-brand-primary/70 transition-colors duration-300 group-hover/value:bg-brand-primary" />
+                    <span className="flex h-full items-end text-sm font-bold leading-5 text-brand-ink">
+                      {value}
+                    </span>
+                  </div>
                 ))}
               </div>
             </div>
@@ -828,11 +831,15 @@ function ServicesSection() {
                     </span>
                     <h3 className="mt-6 font-display text-2xl font-semibold leading-tight text-brand-ink sm:text-3xl">{service.title}</h3>
                     <p className="mt-4 max-w-2xl text-sm leading-7 text-secondary sm:text-base">{service.description}</p>
-                    <div className="mt-6 flex flex-wrap gap-2">
+                    <div className="mt-6 grid gap-2 sm:grid-cols-2">
                       {service.services.map((item) => (
-                        <span className="rounded-full border border-brand-line bg-brand-canvas px-3.5 py-2 text-sm font-semibold text-metadata transition-colors duration-300 group-hover:border-brand-primary/24" key={item}>
-                          {item}
-                        </span>
+                        <div
+                          className="group/capability flex min-h-11 items-center gap-3 rounded-xl border border-brand-line bg-brand-canvas/80 px-3.5 py-2.5 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-brand-primary/24 hover:bg-white"
+                          key={item}
+                        >
+                          <span className="h-7 w-1 shrink-0 rounded-full bg-brand-primary/55 transition-colors duration-300 group-hover/capability:bg-brand-primary" />
+                          <span className="text-sm font-semibold leading-5 text-metadata">{item}</span>
+                        </div>
                       ))}
                     </div>
                     <p className="mt-6 rounded-2xl border border-brand-line bg-brand-canvas px-5 py-4 text-sm font-semibold leading-6 text-brand-ink">
