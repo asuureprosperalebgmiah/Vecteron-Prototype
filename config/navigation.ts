@@ -33,7 +33,6 @@ export const footerNavigation: FooterGroup[] = [
     title: "Start",
     links: [
       { label: "Start a Project", href: "/#project-request" },
-      { label: "Project Request", href: "/#project-request" },
       { label: "Contact", href: "/#contact" }
     ]
   }
