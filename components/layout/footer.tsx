@@ -71,7 +71,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-3 border-t border-white/12 pt-6 text-sm text-footer-muted sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} {brandConfig.legalName}. All rights reserved.</p>
-          <p>Publicity website MVP. Forms are frontend-only until integrations are approved.</p>
+          <p>Project and contact forms are prepared for future submission handling.</p>
         </div>
       </Container>
     </footer>
