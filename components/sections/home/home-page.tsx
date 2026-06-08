@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -187,6 +188,32 @@ const trustItems = [
     description: "Communication stays direct, structured, and useful so stakeholders can follow the work across service areas.",
     icon: "M7.5 8.5a3 3 0 1 0 0 6 M16.5 8.5a3 3 0 1 1 0 6 M10 18.5h4 M8 5.5h8"
   }
+] as const;
+
+const visionMission = [
+  {
+    title: "Vision",
+    description:
+      "To become a leading technology and business solutions company in Africa, recognised for driving innovation, digital transformation, and sustainable growth through world-class technology, infrastructure, branding, and consulting services.",
+    icon: "M5 12h14 M12 5l7 7-7 7 M5 6.5h6 M5 17.5h6"
+  },
+  {
+    title: "Mission",
+    description:
+      "To deliver innovative, reliable, and client-focused solutions in technology, infrastructure, branding, and consulting services that empower businesses, institutions, and individuals to achieve sustainable growth and success.",
+    icon: "M12 4.5 18.5 8v8L12 20.5 5.5 16V8L12 4.5Z M9 12l1.8 1.8L15 9.8"
+  }
+] as const;
+
+const coreValues = [
+  "Innovation",
+  "Integrity",
+  "Customer Satisfaction",
+  "Excellence",
+  "Collaboration",
+  "Professionalism",
+  "Continuous Learning",
+  "Impact & Growth"
 ] as const;
 
 const contactDetails = [
@@ -450,15 +477,34 @@ function AboutIdentityVisual() {
           </div>
         </div>
         <div className="relative overflow-hidden rounded-2xl border border-white/12 bg-white/[0.06] p-4">
-          <div className="absolute inset-y-0 left-8 w-px bg-gradient-to-b from-transparent via-brand-primary/65 to-transparent" />
-          <div className="grid gap-3 sm:grid-cols-3">
-            {["Secure systems", "Creative outputs", "Evidence support"].map((item) => (
-              <div className="relative rounded-xl border border-white/10 bg-brand-ink/40 p-4" key={item}>
-                <span className="absolute -left-[1.05rem] top-6 size-2 rounded-full bg-cyan-200 shadow-[0_0_16px_rgb(103_232_249_/_0.62)]" />
-          <p className="text-sm font-semibold text-on-dark-primary">{item}</p>
-                <span className="mt-4 block h-1.5 w-12 rounded-full bg-brand-primary" />
+          <div className="grid gap-4 sm:grid-cols-[0.9fr_1.1fr] sm:items-stretch">
+            {/* Approved About image. Prefer replacing with a compressed WebP/AVIF at the same path family for production. */}
+            <div
+              className="group relative min-h-40 overflow-hidden rounded-xl border border-brand-primary/18 bg-brand-ink shadow-[0_18px_44px_rgb(0_0_0_/_0.16)]"
+            >
+              <Image
+                alt="Vecteron technology workspace with systems planning, development screens, and infrastructure visuals"
+                className="object-cover opacity-90 saturate-[1.08] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                fill
+                sizes="(min-width: 1024px) 340px, (min-width: 640px) 45vw, 100vw"
+                src="/images/about-execution-workspace.png"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgb(10_33_80_/_0.4),rgb(10_33_80_/_0.08)_42%,rgb(18_138_91_/_0.16)),radial-gradient(circle_at_78%_24%,rgb(103_232_249_/_0.16),transparent_34%)]" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
+              <div className="absolute left-4 top-4 rounded-full border border-white/16 bg-brand-ink/55 px-3 py-1.5 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-cyan-100/92 backdrop-blur-sm">
+                Execution workspace
               </div>
-            ))}
+            </div>
+            <div className="relative grid gap-3">
+              <div className="absolute inset-y-0 left-4 hidden w-px bg-gradient-to-b from-transparent via-brand-primary/65 to-transparent sm:block" />
+              {["Secure systems", "Creative outputs", "Evidence support"].map((item) => (
+                <div className="relative rounded-xl border border-white/10 bg-brand-ink/40 p-4 sm:ml-6" key={item}>
+                  <span className="absolute -left-[1.9rem] top-6 hidden size-2 rounded-full bg-cyan-200 shadow-[0_0_16px_rgb(103_232_249_/_0.62)] sm:block" />
+                  <p className="text-sm font-semibold text-on-dark-primary">{item}</p>
+                  <span className="mt-4 block h-1.5 w-12 rounded-full bg-brand-primary" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -689,6 +735,59 @@ function AboutSection() {
                 <p className="technical-label mt-5 text-label">Support 0{index + 1}</p>
               </div>
             ))}
+          </div>
+        </Reveal>
+      </Container>
+    </section>
+  );
+}
+
+function VisionMissionSection() {
+  return (
+    <section className="relative bg-brand-canvas px-5 pb-20 sm:pb-24">
+      <Container>
+        <Reveal className="relative overflow-hidden rounded-[1.75rem] border border-brand-line bg-white p-5 shadow-[0_18px_54px_rgb(10_33_80_/_0.08)] sm:p-6">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_8%,rgb(18_138_91_/_0.12),transparent_30%),linear-gradient(135deg,rgb(255_255_255),rgb(242_244_247))]" />
+          <div className="relative grid gap-5 lg:grid-cols-2">
+            {visionMission.map((item, index) => (
+              <article
+                className="group relative overflow-hidden rounded-2xl border border-brand-line bg-white p-6 transition-all duration-500 ease-out hover:-translate-y-1 hover:border-brand-primary/30 hover:shadow-[0_16px_40px_rgb(10_33_80_/_0.1)] sm:p-7"
+                key={item.title}
+              >
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-primary via-teal-300 to-cyan-300 opacity-80" />
+                <div className="flex items-start gap-4">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl border border-brand-primary/18 bg-brand-primary/10 text-brand-primary transition-colors duration-300 group-hover:bg-brand-primary group-hover:text-white">
+                    <Icon path={item.icon} />
+                  </span>
+                  <div>
+                    <p className="technical-label text-label">Official {index === 0 ? "Direction" : "Purpose"}</p>
+                    <h3 className="mt-3 font-display text-2xl font-semibold leading-tight text-brand-ink">{item.title}</h3>
+                  </div>
+                </div>
+                <p className="mt-5 text-base leading-8 text-secondary">{item.description}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="relative mt-6 rounded-2xl border border-brand-line bg-brand-canvas p-5 sm:p-6">
+            <div className="grid gap-5 lg:grid-cols-[0.34fr_1fr] lg:items-start">
+              <div>
+                <p className="section-eyebrow text-brand-primary">Core Values</p>
+                <p className="mt-3 text-sm leading-6 text-secondary">
+                  The working principles behind Vecteron&apos;s delivery, communication, and long-term support.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2.5">
+                {coreValues.map((value) => (
+                  <span
+                    className="rounded-full border border-brand-primary/18 bg-white px-4 py-2 text-sm font-semibold text-brand-ink shadow-[0_6px_18px_rgb(10_33_80_/_0.04)]"
+                    key={value}
+                  >
+                    {value}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </Reveal>
       </Container>
@@ -1220,6 +1319,7 @@ export function HomePageSections() {
       <HeroSection />
       <CapabilityBar />
       <AboutSection />
+      <VisionMissionSection />
       <ServicesSection />
       <ProcessStrip />
       <TrustSection />
