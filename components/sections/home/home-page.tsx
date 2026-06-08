@@ -449,7 +449,7 @@ function CapabilityBar() {
 
 function AboutIdentityVisual() {
   return (
-    <div className="relative min-h-[28rem] overflow-hidden rounded-[1.75rem] border border-white/12 bg-brand-ink p-5 shadow-[0_24px_70px_rgb(10_33_80_/_0.16)]">
+    <div className="relative min-h-[22rem] overflow-hidden rounded-[1.75rem] border border-white/12 bg-brand-ink p-5 shadow-[0_24px_70px_rgb(10_33_80_/_0.16)] sm:min-h-[28rem]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_20%,rgb(18_138_91_/_0.34),transparent_32%),radial-gradient(circle_at_24%_76%,rgb(103_232_249_/_0.12),transparent_34%),linear-gradient(135deg,rgb(10_33_80),rgb(7_21_49))]" />
       <div className="vecteron-grid absolute inset-0 opacity-35" />
       <div className="relative grid h-full gap-4">
@@ -499,7 +499,7 @@ function AboutIdentityVisual() {
                 className="object-cover opacity-90 saturate-[1.08] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 fill
                 sizes="(min-width: 1024px) 340px, (min-width: 640px) 45vw, 100vw"
-                src="/images/about-execution-workspace.png"
+                src="/images/about-execution-workspace.WebP"
               />
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgb(10_33_80_/_0.4),rgb(10_33_80_/_0.08)_42%,rgb(18_138_91_/_0.16)),radial-gradient(circle_at_78%_24%,rgb(103_232_249_/_0.16),transparent_34%)]" />
               <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
@@ -586,7 +586,7 @@ function PillarMotif({ motif }: { motif: (typeof aboutPillars)[number]["motif"] 
 function ServiceVisual({ visual }: { visual: (typeof services)[number]["visual"] }) {
   if (visual === "creative") {
     return (
-      <div className="relative min-h-64 overflow-hidden rounded-2xl border border-white/12 bg-brand-ink p-5">
+      <div className="relative min-h-52 overflow-hidden rounded-2xl border border-white/12 bg-brand-ink p-5 sm:min-h-64">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgb(18_138_91_/_0.26),transparent_32%)]" />
         <div className="relative grid h-full gap-4">
           <div className="grid grid-cols-[0.72fr_1.28fr] gap-4">
@@ -619,7 +619,7 @@ function ServiceVisual({ visual }: { visual: (typeof services)[number]["visual"]
 
   if (visual === "research") {
     return (
-      <div className="relative min-h-64 overflow-hidden rounded-2xl border border-white/12 bg-brand-ink p-5">
+      <div className="relative min-h-52 overflow-hidden rounded-2xl border border-white/12 bg-brand-ink p-5 sm:min-h-64">
         <div className="vecteron-grid absolute inset-0 opacity-25" />
         <div className="relative grid h-full gap-4">
           <div className="grid grid-cols-[1fr_auto] gap-4">
@@ -646,7 +646,7 @@ function ServiceVisual({ visual }: { visual: (typeof services)[number]["visual"]
   }
 
   return (
-    <div className="relative min-h-64 overflow-hidden rounded-2xl border border-white/12 bg-brand-ink p-5">
+    <div className="relative min-h-52 overflow-hidden rounded-2xl border border-white/12 bg-brand-ink p-5 sm:min-h-64">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_28%,rgb(103_232_249_/_0.12),transparent_32%)]" />
       <div className="vecteron-grid absolute inset-0 opacity-25" />
       <div className="relative grid h-full content-between gap-4">
@@ -1453,7 +1453,7 @@ function FloatingWhatsApp() {
   return (
     <Link
       aria-label="Chat with Vecteron on WhatsApp"
-      className="whatsapp-float fixed bottom-8 right-8 z-[999] flex size-[60px] cursor-pointer items-center justify-center rounded-full bg-[#25D366] text-white no-underline shadow-[0_4px_20px_rgba(37,211,102,0.4)] transition-all duration-300 ease-[ease] hover:scale-110 hover:shadow-[0_6px_30px_rgba(37,211,102,0.6)]"
+      className="whatsapp-float fixed bottom-5 right-5 z-[999] flex size-[60px] cursor-pointer items-center justify-center rounded-full bg-[#25D366] text-white no-underline shadow-[0_4px_20px_rgba(37,211,102,0.4)] transition-all duration-300 ease-[ease] hover:scale-110 hover:shadow-[0_6px_30px_rgba(37,211,102,0.6)] sm:bottom-8 sm:right-8"
       href={ctas.whatsapp.href}
     >
       <svg aria-hidden="true" className="size-[1.8rem]" fill="none" viewBox="0 0 24 24">

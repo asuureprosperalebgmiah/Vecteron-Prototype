@@ -47,10 +47,10 @@ export function Header() {
               <span className="block h-0.5 w-4 rounded-full bg-white transition-transform group-open:-translate-y-1.5 group-open:-rotate-45" />
             </span>
           </summary>
-          <div className="absolute right-0 mt-3 w-72 rounded-xl border border-white/12 bg-brand-ink p-4 shadow-soft">
+          <div className="absolute right-0 mt-3 w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-white/12 bg-brand-ink p-4 shadow-soft">
             <nav aria-label="Mobile navigation" className="grid gap-1">
               {primaryNavigation.map((item) => (
-                <Link className="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-white/10 hover:text-emerald-200" href={item.href} key={item.href}>
+                <Link className="whitespace-normal rounded-md px-3 py-2 text-sm font-medium leading-6 text-white hover:bg-white/10 hover:text-emerald-200" href={item.href} key={item.href}>
                   {item.label}
                 </Link>
               ))}

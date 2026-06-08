@@ -394,6 +394,16 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
   html {
     scroll-behavior: auto;
   }
@@ -413,6 +423,19 @@ a {
   .hero-globe,
   .hero-globe-trail {
     animation: none;
+  }
+
+  .hero-globe,
+  .whatsapp-float:hover,
+  a:hover,
+  button:hover,
+  article:hover,
+  .group:hover,
+  [class*="hover:-translate"]:hover,
+  [class*="hover:scale"]:hover,
+  .group:hover [class*="group-hover:-translate"],
+  .group:hover [class*="group-hover:scale"] {
+    transform: none !important;
   }
 }
 
