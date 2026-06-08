@@ -36,14 +36,14 @@ export function WhatsAppLink({
   return (
     <Link
       className={cn(
-        "group inline-flex min-h-11 items-center justify-center gap-2.5 border border-white/12 bg-white/5 px-4 py-2 text-sm font-semibold text-footer transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-success/50 hover:bg-brand-success/12 hover:text-white hover:shadow-[0_12px_30px_rgb(34_122_93_/_0.16)]",
+        "group inline-flex min-h-11 items-center justify-center gap-2.5 border border-brand-success/28 bg-brand-success/8 px-4 py-2 text-sm font-semibold text-inherit transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-success/50 hover:bg-brand-success/12 hover:shadow-[0_12px_30px_rgb(34_122_93_/_0.16)]",
         shape === "pill" ? "rounded-full" : "rounded-lg px-5 py-2.5",
         className
       )}
       href={href}
       {...props}
     >
-      <span className="flex size-7 shrink-0 items-center justify-center rounded-full border border-white/14 bg-white/5 text-footer transition-all duration-300 group-hover:scale-105 group-hover:border-brand-success/50 group-hover:bg-brand-success/14 group-hover:text-brand-success group-hover:shadow-[0_0_18px_rgb(34_122_93_/_0.42)]">
+      <span className="flex size-7 shrink-0 items-center justify-center rounded-full border border-brand-success/35 bg-brand-success/14 text-brand-success shadow-[0_0_14px_rgb(18_138_91_/_0.18)] transition-all duration-300 group-hover:scale-105 group-hover:border-brand-success/55 group-hover:bg-brand-success/18 group-hover:text-brand-success group-hover:shadow-[0_0_18px_rgb(18_138_91_/_0.38)]">
         <WhatsAppIcon />
       </span>
       <span>{label}</span>

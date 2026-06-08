@@ -23,10 +23,10 @@ export const footerNavigation: FooterGroup[] = [
   {
     title: "Services",
     links: [
-      { label: "Web Development", href: "/#services" },
-      { label: "Infrastructure & Procurement", href: "/#services" },
-      { label: "Creative & Branding", href: "/#services" },
-      { label: "Research Consulting", href: "/#services" }
+      { label: "Software & Technology Services", href: "/#services" },
+      { label: "Infrastructure & Workspace Planning", href: "/#services" },
+      { label: "Creative, Branding & Media Services", href: "/#services" },
+      { label: "Research & Academic Consulting", href: "/#services" }
     ]
   },
   {
