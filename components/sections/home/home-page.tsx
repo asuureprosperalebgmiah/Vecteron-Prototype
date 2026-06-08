@@ -916,24 +916,32 @@ function PortfolioMockup({ visual }: { visual: (typeof portfolioItems)[number]["
   if (visual === "dashboard") {
     return (
       <div className={commonFrame}>
-        <div className="vecteron-grid absolute inset-0 opacity-45 transition-transform duration-700 ease-out group-hover:scale-110" />
-        <div className="relative grid h-full grid-cols-[0.78fr_1.22fr] gap-3">
-          <div className="grid content-start gap-2 rounded-lg border border-white/10 bg-white/[0.08] p-2">
-            <span className="h-2 w-10 rounded-full bg-cyan-100/58" />
-            <span className="h-2 rounded-full bg-white/22" />
-            <span className="h-2 w-4/5 rounded-full bg-white/18" />
-            <span className="h-2 w-2/3 rounded-full bg-brand-primary/65" />
+        <div className="vecteron-grid absolute inset-0 opacity-35 transition-transform duration-700 ease-out group-hover:scale-105" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_24%,rgb(103_232_249_/_0.18),transparent_30%)]" />
+        <div className="relative grid h-full grid-rows-[1fr_auto] gap-2">
+          <div className="relative rounded-lg border border-white/10 bg-brand-ink/42 p-3">
+            <div className="absolute left-1/2 top-4 size-7 -translate-x-1/2 rounded-full border border-cyan-100/55 bg-cyan-100/10 shadow-[0_0_18px_rgb(103_232_249_/_0.24)]" />
+            <div className="absolute left-1/2 top-11 h-8 w-px -translate-x-1/2 bg-cyan-100/35" />
+            <div className="absolute left-[20%] top-[48%] h-px w-[60%] bg-gradient-to-r from-brand-primary/70 via-cyan-100/45 to-brand-primary/70" />
+            <div className="absolute bottom-5 left-[14%] size-7 rounded-lg border border-brand-primary/45 bg-brand-primary/14" />
+            <div className="absolute bottom-5 left-[41%] size-7 rounded-lg border border-cyan-100/35 bg-white/[0.06]" />
+            <div className="absolute bottom-5 right-[14%] size-7 rounded-lg border border-brand-primary/45 bg-brand-primary/14" />
+            <div className="absolute bottom-14 left-[17%] h-5 w-px bg-brand-primary/45" />
+            <div className="absolute bottom-14 left-1/2 h-5 w-px -translate-x-1/2 bg-cyan-100/35" />
+            <div className="absolute bottom-14 right-[17%] h-5 w-px bg-brand-primary/45" />
           </div>
-          <div className="grid gap-2">
-            <div className="grid grid-cols-3 gap-2">
-              {[0, 1, 2].map((item) => (
-                <span className="h-10 rounded-lg border border-white/10 bg-white/[0.08]" key={item} />
+          <div className="grid grid-cols-[1fr_0.8fr] gap-2">
+            <div className="grid grid-cols-2 gap-1.5">
+              {["Network", "Zones", "Equip", "Deploy"].map((item) => (
+                <span className="rounded-md border border-white/10 bg-white/[0.08] px-1.5 py-1 text-[0.48rem] font-bold uppercase tracking-[0.08em] text-cyan-100/72" key={item}>
+                  {item}
+                </span>
               ))}
             </div>
-            <div className="relative flex items-end gap-1 rounded-lg border border-white/10 bg-white/[0.07] p-2">
-              {[42, 64, 38, 72, 54, 86].map((height, index) => (
-                <span className="flex-1 rounded-t bg-gradient-to-t from-brand-primary to-cyan-200/70" key={height + index} style={{ height: `${height}%` }} />
-              ))}
+            <div className="grid content-center gap-1.5 rounded-md border border-brand-primary/24 bg-brand-primary/10 p-2">
+              <span className="h-1.5 rounded-full bg-cyan-100/60" />
+              <span className="h-1.5 w-4/5 rounded-full bg-white/24" />
+              <span className="h-1.5 w-2/3 rounded-full bg-brand-primary/70" />
             </div>
           </div>
         </div>
@@ -946,19 +954,27 @@ function PortfolioMockup({ visual }: { visual: (typeof portfolioItems)[number]["
       <div className={commonFrame}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_26%,rgb(255_255_255_/_0.16),transparent_26%)]" />
         <div className="relative grid h-full grid-cols-[0.9fr_1.1fr] gap-3">
-          <div className="grid place-items-center rounded-xl border border-white/12 bg-white/[0.08]">
-            <div className="flex size-16 items-center justify-center rounded-2xl border border-white/16 bg-white/10">
-              <span className="h-16 w-10 skew-x-[-18deg] bg-brand-primary" />
-              <span className="-ml-3 h-16 w-10 skew-x-[-18deg] bg-brand-ink ring-1 ring-white/20" />
+          <div className="grid gap-2 rounded-xl border border-white/12 bg-white/[0.08] p-3">
+            <div className="grid place-items-center rounded-lg border border-white/12 bg-brand-ink/52">
+              <span className="font-display text-lg font-bold text-cyan-100">Aa</span>
+            </div>
+            <div className="grid grid-cols-3 gap-1.5">
+              <span className="aspect-square rounded-md bg-brand-primary" />
+              <span className="aspect-square rounded-md bg-cyan-100/80" />
+              <span className="aspect-square rounded-md bg-brand-canvas/88" />
             </div>
           </div>
-          <div className="grid content-center gap-3">
-            <span className="h-3 rounded-full bg-cyan-100/70" />
-            <span className="h-3 w-4/5 rounded-full bg-white/34" />
-            <div className="mt-2 grid grid-cols-3 gap-2">
-              <span className="aspect-square rounded-lg bg-brand-primary" />
-              <span className="aspect-square rounded-lg bg-brand-ink ring-1 ring-white/12" />
-              <span className="aspect-square rounded-lg bg-brand-canvas/80" />
+          <div className="grid gap-2">
+            <div className="rounded-lg border border-white/12 bg-white/[0.08] p-2">
+              <span className="block h-2 w-14 rounded-full bg-cyan-100/70" />
+              <div className="mt-2 grid grid-cols-[1.2fr_0.8fr] gap-2">
+                <span className="h-10 rounded-md bg-brand-primary/35" />
+                <span className="h-10 rounded-md bg-white/14" />
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <span className="h-12 rounded-lg border border-brand-primary/25 bg-brand-primary/14" />
+              <span className="h-12 rounded-lg border border-white/12 bg-white/[0.08]" />
             </div>
           </div>
         </div>
@@ -970,22 +986,42 @@ function PortfolioMockup({ visual }: { visual: (typeof portfolioItems)[number]["
     return (
       <div className={commonFrame}>
         <div className="vecteron-grid absolute inset-0 opacity-35" />
-        <div className="relative grid h-full gap-3">
-          <div className="grid grid-cols-[1fr_auto] items-center gap-3 rounded-lg border border-white/10 bg-white/[0.08] p-3">
-            <div className="grid gap-2">
-              <span className="h-2.5 w-2/3 rounded-full bg-cyan-100/68" />
-              <span className="h-2 rounded-full bg-white/25" />
-            </div>
-            <span className="size-10 rounded-full border border-brand-primary/55 bg-brand-primary/18" />
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            {[0, 1, 2].map((item) => (
-              <div className="grid gap-2 rounded-lg border border-white/10 bg-white/[0.07] p-2" key={item}>
-                <span className="h-2 rounded-full bg-brand-primary/70" />
-                <span className="h-2 rounded-full bg-white/22" />
-                <span className="h-2 w-2/3 rounded-full bg-white/18" />
+        <div className="relative grid h-full grid-cols-[0.85fr_1.15fr] gap-3">
+          <div className="relative">
+            <div className="absolute left-3 top-3 h-[calc(100%-0.75rem)] w-[72%] rounded-lg border border-white/12 bg-white/[0.06]" />
+            <div className="absolute left-1.5 top-1.5 h-[calc(100%-0.75rem)] w-[72%] rounded-lg border border-white/12 bg-brand-ink/52 p-2">
+              <span className="block h-1.5 w-12 rounded-full bg-cyan-100/70" />
+              <span className="mt-2 block h-1.5 rounded-full bg-white/24" />
+              <span className="mt-1.5 block h-1.5 w-4/5 rounded-full bg-white/18" />
+              <div className="mt-3 grid grid-cols-2 gap-1">
+                {[0, 1, 2, 3].map((item) => (
+                  <span className="h-4 rounded border border-white/10 bg-white/[0.06]" key={item} />
+                ))}
               </div>
-            ))}
+            </div>
+          </div>
+          <div className="grid gap-2">
+            <div className="relative rounded-lg border border-white/10 bg-white/[0.07] p-2">
+              <span className="absolute left-4 top-1/2 h-px w-[calc(100%-2rem)] bg-cyan-100/25" />
+              {["Q", "E", "F"].map((item) => (
+                <span
+                  className="relative z-10 mr-2 inline-flex size-6 items-center justify-center rounded-full border border-brand-primary/45 bg-brand-primary/16 text-[0.58rem] font-bold text-cyan-100"
+                  key={item}
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="grid grid-cols-3 gap-1.5 rounded-lg border border-white/10 bg-white/[0.07] p-2">
+              {[0, 1, 2, 3, 4, 5].map((item) => (
+                <span className={item === 4 ? "h-5 rounded bg-brand-primary/55" : "h-5 rounded bg-white/14"} key={item} />
+              ))}
+            </div>
+            <div className="grid gap-1.5 rounded-lg border border-white/10 bg-white/[0.07] p-2">
+              <span className="h-1.5 rounded-full bg-brand-primary/70" />
+              <span className="h-1.5 rounded-full bg-cyan-100/48" />
+              <span className="h-1.5 w-2/3 rounded-full bg-white/22" />
+            </div>
           </div>
         </div>
       </div>
@@ -994,16 +1030,43 @@ function PortfolioMockup({ visual }: { visual: (typeof portfolioItems)[number]["
 
   return (
     <div className={commonFrame}>
-      <div className="vecteron-grid absolute inset-0 opacity-45 transition-transform duration-700 ease-out group-hover:scale-110" />
-      <div className="relative grid h-full content-between">
-        <div className="grid gap-2">
-          <span className="h-2 w-16 rounded-full bg-cyan-100/68" />
-          <span className="h-8 rounded-xl border border-white/10 bg-white/[0.09]" />
+      <div className="vecteron-grid absolute inset-0 opacity-42 transition-transform duration-700 ease-out group-hover:scale-105" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_18%,rgb(103_232_249_/_0.2),transparent_30%)]" />
+      <div className="relative grid h-full grid-cols-[0.36fr_1fr] gap-3">
+        <div className="grid gap-2 rounded-lg border border-white/10 bg-brand-ink/55 p-2">
+          {["App", "Users", "Access"].map((item, index) => (
+            <span
+              className={index === 2 ? "rounded-md border border-brand-primary/35 bg-brand-primary/16 px-1.5 py-1 text-[0.48rem] font-bold uppercase tracking-[0.08em] text-cyan-100/78" : "rounded-md border border-white/10 bg-white/[0.07] px-1.5 py-1 text-[0.48rem] font-bold uppercase tracking-[0.08em] text-cyan-100/70"}
+              key={item}
+            >
+              {item}
+            </span>
+          ))}
         </div>
         <div className="grid gap-2">
-          <span className="h-2 rounded-full bg-white/30" />
-          <span className="h-2 w-2/3 rounded-full bg-brand-primary/85" />
-          <span className="h-2 w-1/2 rounded-full bg-cyan-100/55" />
+          <div className="grid grid-cols-[1fr_auto] gap-2 rounded-lg border border-white/10 bg-white/[0.08] p-2">
+            <div className="grid gap-1.5">
+              <span className="h-2 w-16 rounded-full bg-cyan-100/68" />
+              <span className="h-2 rounded-full bg-white/24" />
+              <span className="h-2 w-4/5 rounded-full bg-white/18" />
+            </div>
+            <span className="grid size-9 place-items-center rounded-full border border-brand-primary/45 bg-brand-primary/16 text-[0.58rem] font-bold text-cyan-100">
+              SEC
+            </span>
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            {[0, 1, 2].map((item) => (
+              <span className="h-10 rounded-lg border border-white/10 bg-white/[0.07]" key={item} />
+            ))}
+          </div>
+          <div className="relative rounded-lg border border-white/10 bg-white/[0.06] p-2">
+            <span className="absolute left-4 top-1/2 h-px w-[calc(100%-2rem)] bg-gradient-to-r from-brand-primary/70 via-cyan-100/45 to-brand-primary/70" />
+            <div className="relative flex justify-between">
+              {[0, 1, 2, 3].map((item) => (
+                <span className="size-2.5 rounded-full bg-cyan-100 shadow-[0_0_12px_rgb(103_232_249_/_0.34)]" key={item} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1109,6 +1172,11 @@ function PortfolioSection() {
             </Reveal>
           ))}
         </div>
+        <Reveal className="mx-auto mt-8 max-w-3xl rounded-2xl border border-white/12 bg-white/[0.07] px-5 py-4 text-center">
+          <p className="text-sm leading-6 text-on-dark-secondary">
+            Portfolio examples currently illustrate solution types and showcase formats. Approved client work will be published where project details and permissions allow.
+          </p>
+        </Reveal>
       </Container>
     </section>
   );
